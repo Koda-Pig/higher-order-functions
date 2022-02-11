@@ -39,4 +39,54 @@ const ageMap = ages
   .map(age => Math.sqrt(age))
   .map(age => age * 2)
 
-// 
+// sort
+
+// sort numerically!
+const sortedGames = games.sort((g1, g2) => {
+  if (g1.start > g2.start) return 1
+  else return -1
+})
+
+// sort alphabetically!
+// const sortedGames = games.sort((g1, g2) => {
+//   if (g1.name[0] > g2.name[0]) return 1
+//   else return -1
+// })
+
+console.log(sortedGames)
+
+
+
+
+/////////////////////////////////////////
+
+// generate a random string, then sort it using .sort()
+
+/*
+let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+function generateString(length, string) {
+  let result = ' ';
+  for ( let i = 0; i < length; i++ ) {
+      result += string.charAt(Math.floor(Math.random() * string.length));
+  }
+  return result;
+}
+
+let randomString = generateString(50, alphabet)
+
+const sortedRandomString = randomString.split('').sort((l1,l2) => {
+  if (l1 > l2) return 1
+  else return -1
+})
+
+console.log(sortedRandomString.join(''))
+
+*/
+
+
+// code golf of above version
+let a = 'abcdefghijklmnopqrstuvwxyz'
+const genRandStr=(l)=>{let r='',i=0;for(i;i<l;i++)r+=a.charAt(Math.floor(Math.random()*a.length));return r}
+const sortStr=(s)=>{return s.split('').sort((l1,l2)=>{if(l1>l2)return 1;else return-1}).join('')}
+// console.log('random string: '+genRandStr(50)+'\n sorted string: '+sortStr(genRandStr(10)))
