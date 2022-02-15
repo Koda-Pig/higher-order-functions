@@ -14,7 +14,8 @@ const ages = [12, 23, 66, 73, 13, 3, 54, 67, 11, 1, 45, 44]
 
 // forEach
 
-// games.forEach(game => {console.log(game.name)})
+const namesOfGames = []
+games.forEach(game => { namesOfGames.push(game.name)})
 
 // filter
 
@@ -40,6 +41,9 @@ const ageMap = ages
   .map(age => age * 2)
 
 // sort - return 1 or -1, depending on your condition
+
+// use sort to shuffle!
+const shuffleArr = (arr) => arr.sort(() => Math.random() - 0.5)
 
 // sort numerically!
 const sortedGamesByNum = games.sort((game1, game2) => {
@@ -94,7 +98,9 @@ const sortedRandomString = randomString.split('').sort((l1,l2) => {
 
 // code golf of above version
 let a = 'abcdefghijklmnopqrstuvwxyz'
-const genRandStr=(l)=>{let r='',i=0;for(i;i<l;i++)r+=a.charAt(Math.floor(Math.random()*a.length));return r}
+const genRandStr=(l)=>{let r='',i=0;for(i;i <l;i++)r+=a.charAt(Math.floor(Math.random()*a.length));return r}
+
+
 const sortStr=(s)=>{return s.split('').sort((l1,l2)=>{if(l1>l2)return 1;else return-1}).join('')}
 // console.log('random string: '+genRandStr(50)+'\n sorted string: '+sortStr(genRandStr(10)))
 
@@ -118,4 +124,53 @@ const combo = ages
   .sort((a,b) => a - b) // youngest to oldest
   .reduce((a, b) => a + b, 0) // added together
 
-console.log(`combo: ${combo}`)
+// console.log(`combo: ${combo}`)
+
+
+
+
+/////////////////////////////////////
+// other useful stuff
+
+// COPY TO CLIPBOARD
+function copyToClipboard (text) {
+  navigator.clipboard?.writeText && navigator.clipboard.writeText(text)
+}
+
+const heading = document.querySelector('h3')
+
+heading.addEventListener('click', function() {
+  copyToClipboard(this.innerText)
+})
+
+
+// DETECT DARK MODE
+function isDarkMode() {
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) console.log('dark mode')
+  else console.log('light mode')
+}
+
+isDarkMode()
+
+/*
+CSS would look like:
+@media (prefers-color-scheme: dark) {...}
+*/
+
+// GENERATE A RANDOM COLOR
+function generateRandomHexColor () {
+  const randomCol = `#${Math.floor(Math.random() * 0xffffff).toString(16)}`
+  resultPara.innerText = randomCol
+  colorBlock.style.backgroundColor = randomCol
+}
+
+let btn = document.querySelector('button'),
+    resultPara = document.querySelector('p.random-color'),
+    colorBlock = document.querySelector('.color-block')
+
+btn.addEventListener('click', () => {
+  generateRandomHexColor()
+})

@@ -5,9 +5,40 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    body {
+      background: #eee;
+      color: #333;
+      text-align: center;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #333;
+        color: #fff;
+      }
+    }
+    button {
+      display: block;
+      position: relative;
+      margin: 0 auto;
+    }
+    .color-block {
+      height: 200px;
+      width: 200px;
+      background: #fff;
+      margin: 0 auto;
+    }
+    hr {
+      width: clamp(200px, 300px, 90%);
+    }
+  </style>
 </head>
-<body style="background: #333">
+<body>
+  <h3>click to copy</h3>
+  <button>generate a random color</button>
+  <hr>
+  <p class="random-color">&nbsp;</p>
+  <div class="color-block"></div>
   <script src="main.js"></script>
-
 </body>
 </html>
